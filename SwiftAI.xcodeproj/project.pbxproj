@@ -12,7 +12,6 @@
 		95D570F81E4FA2FC00378244 /* SwiftAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 95D570EA1E4FA2FC00378244 /* SwiftAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95D571021E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */; };
 		95D571041E4FA72900378244 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571031E4FA72900378244 /* Extensions.swift */; };
-		95D571061E4FA83300378244 /* SAIRFromZeroToOneFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571051E4FA83300378244 /* SAIRFromZeroToOneFloat.swift */; };
 		95D571081E4FF09800378244 /* SAIPerceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571071E4FF09800378244 /* SAIPerceptron.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +34,6 @@
 		95D570F71E4FA2FC00378244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAIMccullochPittsPerceptron.swift; sourceTree = "<group>"; };
 		95D571031E4FA72900378244 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		95D571051E4FA83300378244 /* SAIRFromZeroToOneFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAIRFromZeroToOneFloat.swift; sourceTree = "<group>"; };
 		95D571071E4FF09800378244 /* SAIPerceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAIPerceptron.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +81,6 @@
 				95D570EB1E4FA2FC00378244 /* Info.plist */,
 				95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */,
 				95D571031E4FA72900378244 /* Extensions.swift */,
-				95D571051E4FA83300378244 /* SAIRFromZeroToOneFloat.swift */,
 				95D571071E4FF09800378244 /* SAIPerceptron.swift */,
 			);
 			path = SwiftAI;
@@ -211,7 +208,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95D571061E4FA83300378244 /* SAIRFromZeroToOneFloat.swift in Sources */,
 				95D571081E4FF09800378244 /* SAIPerceptron.swift in Sources */,
 				95D571021E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift in Sources */,
 				95D571041E4FA72900378244 /* Extensions.swift in Sources */,
@@ -348,6 +344,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftAI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lnu.edu.ua.SwiftAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,6 +366,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftAI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lnu.edu.ua.SwiftAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";

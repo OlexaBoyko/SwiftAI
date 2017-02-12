@@ -8,25 +8,36 @@
 
 import Foundation
 
+
 open class SAIPerceptron {
-    var studyingCoefficient: SAIRFromZeroToOneFloat
-    var inputWeights: Array<Double>
-    var expectingResult: Double
-    var activationFunc: (Double) -> Double
+    open var studyingCoefficient: Double {
+        didSet{
+            if studyingCoefficient > 1 {
+                studyingCoefficient = 1
+                return
+            }
+            if studyingCoefficient < 0 {
+                studyingCoefficient = 0
+                return
+            }
+        }
+    }
+    open var inputWeights: Array<Double>
+    //var expectingResult: Double
+    open var activationFunc: (Double) -> Double
     
     
-    init(studyingCoefficient: SAIRFromZeroToOneFloat,
+    init(studyingCoefficient: Double,
          inputWeights: Array<Double>,
-         expectingResult: Double,
          activationFunc: @escaping (Double) -> Double) {
         
         self.studyingCoefficient = studyingCoefficient
         self.inputWeights = inputWeights
-        self.expectingResult = expectingResult
+        //self.expectingResult = expectingResult
         self.activationFunc = activationFunc
     }
     
-    func calculate(input: [Double]) throws -> Double {
+    open func calculate(input: [Double]) throws -> Double {
         if input.count != inputWeights.count {
             throw NSError()
         }
@@ -39,23 +50,23 @@ open class SAIPerceptron {
         return activationFunc(result)
     }
     
-    func educate(withInput input: [Double]) throws {
+    open func educate(withInput input: [Double], expectingResult: Double) throws {
         
-        let d = self.expectingResult
+        let d = expectingResult
         
         let output = try self.calculate(input: input)
         
         var result = [Double]()
         
         for i in 0..<input.count {
-            result.append(self.inputWeights[i] + self.studyingCoefficient.value * (d - output) * input[i])
+            result.append(self.inputWeights[i] + self.studyingCoefficient * (d - output) * input[i])
         }
         
         self.inputWeights = result
     }
     
     //TODO: educateHiddenPerceptron
-    func educateHiddenPerceptron() {
+    open func educateHiddenPerceptron() {
         
     }
 }

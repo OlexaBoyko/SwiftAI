@@ -9,9 +9,8 @@
 import Foundation
 
 open class SAIMccullochPittsPerceptron: SAIPerceptron {
-    init(studyingCoefficient: SAIRFromZeroToOneFloat,
+    public init(studyingCoefficient: Double,
          inputWeights: Array<Double>,
-         expectingResult: Double,
          activationFunc: @escaping (Double) -> Bool) {
         
         let actFunc: (Double) -> Double = { input in
@@ -19,7 +18,6 @@ open class SAIMccullochPittsPerceptron: SAIPerceptron {
         }
         super.init(studyingCoefficient: studyingCoefficient,
                    inputWeights: inputWeights,
-                   expectingResult: expectingResult,
                    activationFunc: actFunc)
     }
 }
