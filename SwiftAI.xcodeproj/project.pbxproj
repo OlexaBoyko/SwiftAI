@@ -13,6 +13,7 @@
 		95D571021E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */; };
 		95D571041E4FA72900378244 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571031E4FA72900378244 /* Extensions.swift */; };
 		95D571061E4FA83300378244 /* SAIRFromZeroToOneFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571051E4FA83300378244 /* SAIRFromZeroToOneFloat.swift */; };
+		95D571081E4FF09800378244 /* SAIPerceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D571071E4FF09800378244 /* SAIPerceptron.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAIMccullochPittsPerceptron.swift; sourceTree = "<group>"; };
 		95D571031E4FA72900378244 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95D571051E4FA83300378244 /* SAIRFromZeroToOneFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAIRFromZeroToOneFloat.swift; sourceTree = "<group>"; };
+		95D571071E4FF09800378244 /* SAIPerceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAIPerceptron.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */,
 				95D571031E4FA72900378244 /* Extensions.swift */,
 				95D571051E4FA83300378244 /* SAIRFromZeroToOneFloat.swift */,
+				95D571071E4FF09800378244 /* SAIPerceptron.swift */,
 			);
 			path = SwiftAI;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D571061E4FA83300378244 /* SAIRFromZeroToOneFloat.swift in Sources */,
+				95D571081E4FF09800378244 /* SAIPerceptron.swift in Sources */,
 				95D571021E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift in Sources */,
 				95D571041E4FA72900378244 /* Extensions.swift in Sources */,
 			);
@@ -418,6 +422,7 @@
 				95D570FD1E4FA2FC00378244 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95D570FE1E4FA2FC00378244 /* Build configuration list for PBXNativeTarget "SwiftAITests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +431,7 @@
 				95D571001E4FA2FC00378244 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
