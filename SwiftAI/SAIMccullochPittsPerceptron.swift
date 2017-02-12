@@ -15,25 +15,25 @@ open class SAIMccullochPittsPerceptron {
 open class SAIPerceptron {
     var studyingCoefficient: SAIRFromZeroToOneFloat
     var inputWeights: Array<Double>
-    var expectingResult: Array<Double>
-    ///TODO: finish activationFunc
+    var expectingResult: Double
+    //TODO: finish activationFunc
     //var activationFunc: (Array<Double>) -> (Array<Double>)
     
     
     init() {
         self.studyingCoefficient = 0
         self.inputWeights = []
-        self.expectingResult = []
+        self.expectingResult = 0
     }
     
-    func calculate(input: [Double]) throws -> [Double] {
+    func calculate(input: [Double]) throws -> Double {
         if input.count != inputWeights.count {
             throw NSError()
         }
         
-        var result = [Double]()
+        var result = 0.0
         for i in 0..<input.count {
-            result.append(input[i]*self.inputWeights[i])
+            result.add(input[i]*self.inputWeights[i])
         }
         
         return result
@@ -47,8 +47,8 @@ open class SAIPerceptron {
         
         var result = [Double]()
         
-        for i in 0..<output.count {
-            let deltaWeight = self.studyingCoefficient.value * (d[i] - output[i]) * input[i]
+        for i in 0..<input.count {
+            let deltaWeight = self.studyingCoefficient.value * (d - output) * input[i]
             result.append(self.inputWeights[i] + deltaWeight)
         }
         
