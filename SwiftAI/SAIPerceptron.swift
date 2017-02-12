@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 open class SAIPerceptron {
     public var studyingCoefficient: Double {
         didSet{
@@ -23,7 +22,7 @@ open class SAIPerceptron {
         }
     }
     public var inputWeights: Array<Double>
-    //var expectingResult: Double
+    internal var delegates: Array<SAIPerceptronDelegate> = []
     public var activationFunc: (Double) -> Double
     
     
@@ -47,15 +46,16 @@ open class SAIPerceptron {
             result.add(input[i]*self.inputWeights[i])
         }
         
-        return activationFunc(result)
+        let output = activationFunc(result)
+        
+        callculationDidFinish(output: output)
+        
+        return output
     }
     
     public func educate(withInput input: [Double], expectingResult: Double) throws {
-        
         let d = expectingResult
-        
         let output = try self.calculate(input: input)
-        
         var result = [Double]()
         
         for i in 0..<input.count {
@@ -65,7 +65,15 @@ open class SAIPerceptron {
         self.inputWeights = result
     }
     
+    public func addDelegate(_ delegate: SAIPerceptronDelegate) {
+        self.delegates.append(delegate)
+    }
     
+    internal func callculationDidFinish(output: Double) {
+        for delegate in self.delegates {
+            delegate.calculationFinished(output: output)
+        }
+    }
     
     //TODO: educateHiddenPerceptron
     public func educateHiddenPerceptron() {
@@ -73,7 +81,9 @@ open class SAIPerceptron {
     }
 }
 
-
+protocol SAIPerceptronDelegate {
+    func calculationFinished(output: Double)
+}
 
 
 
