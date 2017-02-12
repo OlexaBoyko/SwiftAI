@@ -65,6 +65,8 @@ open class SAIPerceptron {
         self.inputWeights = result
     }
     
+    
+    
     //TODO: educateHiddenPerceptron
     public func educateHiddenPerceptron() {
         

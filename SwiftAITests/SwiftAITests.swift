@@ -21,7 +21,36 @@ class SwiftAITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testOrFunction() {
+        
+        let inputWeights = [0.0, 0.0]
+        
+        let perc = SAIPerceptron(studyingCoefficient: 0.05,
+                                 inputWeights: inputWeights,
+                                 activationFunc: {return $0 >= 1.0 ? 1.0 : 0.0})
+        
+        do {
+            let expected = 1.0
+            
+            var result = try perc.calculate(input: [1.0, 0.0])
+            
+            while result != expected {
+                result = try perc.calculate(input: [1.0, 0.0])
+                print(result)
+                try perc.educate(withInput: [1.0, 0.0], expectingResult: 1.0)
+                print(perc.inputWeights)
+            }
+            
+            //            print(result)
+            //            try perc.educate(withInput: [1.0, 0.0], expectingResult: 1.0)
+            //            print(perc.inputWeights)
+            
+            
+        } catch {
+            XCTFail()
+        }
+        
+        
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
