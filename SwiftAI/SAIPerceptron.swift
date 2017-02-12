@@ -10,7 +10,7 @@ import Foundation
 
 
 open class SAIPerceptron {
-    open var studyingCoefficient: Double {
+    public var studyingCoefficient: Double {
         didSet{
             if studyingCoefficient > 1 {
                 studyingCoefficient = 1
@@ -22,12 +22,12 @@ open class SAIPerceptron {
             }
         }
     }
-    open var inputWeights: Array<Double>
+    public var inputWeights: Array<Double>
     //var expectingResult: Double
-    open var activationFunc: (Double) -> Double
+    public var activationFunc: (Double) -> Double
     
     
-    init(studyingCoefficient: Double,
+    public init(studyingCoefficient: Double,
          inputWeights: Array<Double>,
          activationFunc: @escaping (Double) -> Double) {
         
@@ -37,7 +37,7 @@ open class SAIPerceptron {
         self.activationFunc = activationFunc
     }
     
-    open func calculate(input: [Double]) throws -> Double {
+    public func calculate(input: [Double]) throws -> Double {
         if input.count != inputWeights.count {
             throw NSError()
         }
@@ -50,7 +50,7 @@ open class SAIPerceptron {
         return activationFunc(result)
     }
     
-    open func educate(withInput input: [Double], expectingResult: Double) throws {
+    public func educate(withInput input: [Double], expectingResult: Double) throws {
         
         let d = expectingResult
         
@@ -66,7 +66,7 @@ open class SAIPerceptron {
     }
     
     //TODO: educateHiddenPerceptron
-    open func educateHiddenPerceptron() {
+    public func educateHiddenPerceptron() {
         
     }
 }
