@@ -36,9 +36,9 @@ class SwiftAITests: XCTestCase {
             
             while result != expected {
                 result = try perc.calculate(input: [1.0, 0.0])
-                print(result)
+                //print(result)
                 try perc.educate(withInput: [1.0, 0.0], expectingResult: 1.0)
-                print(perc.inputWeights)
+                //print(perc.inputWeights)
             }
             
             //            print(result)
@@ -60,10 +60,18 @@ class SwiftAITests: XCTestCase {
             ],
                                        studyingCoefficient: 0.3,
                                        expectedResult: 0.7,
-                                       transformingFunction: {1/(1 + exp($0))})
+                                       transformingFunction: {1/(1 + exp(-$0))})
         if network == nil {
             XCTFail()
         }
+        
+        do {
+            let value = try network?.computeResult()
+            print(value?.first as Any)
+        } catch {
+            XCTFail()
+        }
+        
     }
     
     func testPerformanceExample() {

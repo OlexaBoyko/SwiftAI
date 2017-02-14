@@ -10,7 +10,7 @@ import Foundation
 
 class SAINeuralNetwork {
     var input: [Double]
-    var perceptrons: [[SAIPerceptron]] = [[]]
+    var perceptronLayers: [[SAIPerceptron]] = [[]]
     var studyingCoefficient: Double = 0.1
     var expectedResult: Double
     
@@ -44,15 +44,35 @@ class SAINeuralNetwork {
                 layer.append(perceptron)
             }
             
-            self.perceptrons.append(layer)
+            self.perceptronLayers.append(layer)
         }
         
     }
     
-//    func computeResult() {
-//        
-//    }
-    
+    func computeResult() throws -> [Double] {
+        do {
+            for i in 0..<perceptronLayers.count {
+                var tempInput = self.input
+                var tempResult = [Double]()
+                for perceptron in perceptronLayers[i] {
+                    var perceptronInput = [Double]()
+                    for i in perceptron.inputIndexes {
+                        perceptronInput.append(tempInput[i])
+                    }
+                    let result = try perceptron.calculate(input: perceptronInput)
+                    tempResult.append(result)
+                }
+                if i != perceptronLayers.count - 1 {
+                    tempInput = tempResult
+                } else {
+                    return tempResult
+                }
+            }
+        } catch {
+            throw NSError()
+        }
+        throw NSError()
+    }
 }
 
 public struct SAIPerceptronInfo {
