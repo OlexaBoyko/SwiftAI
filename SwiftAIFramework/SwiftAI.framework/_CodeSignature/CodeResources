@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		3VGcMTP5yPNqtEtZPXvDqJsKAEg=
+		4ZDdAZocEIwKTCoDb06PAKgAaGE=
 		</data>
 		<key>Modules/SwiftAI.swiftmodule/i386.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/SwiftAI.swiftmodule/i386.swiftmodule</key>
 		<data>
-		C9sXKSzNBWjbfFByJy7fDJdf66o=
+		3a8HfKP3ZtassDeVwiIdgLNCfPk=
 		</data>
 		<key>Modules/SwiftAI.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/SwiftAI.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Z/0zx3sFrzabDAVzhT+Zzro0u94=
+		gz9KmQH3l2QbZoWV5VTo7ELA4rk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -76,11 +76,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			C9sXKSzNBWjbfFByJy7fDJdf66o=
+			3a8HfKP3ZtassDeVwiIdgLNCfPk=
 			</data>
 			<key>hash2</key>
 			<data>
-			bvomjLBrMMOMZNZriIIIlmyEMYprsyqsB9XeuGVnCw8=
+			PH8fm92+zyy+hiUkFOFzssnvGDQVTTflohtTuY8DlvQ=
 			</data>
 		</dict>
 		<key>Modules/SwiftAI.swiftmodule/x86_64.swiftdoc</key>
@@ -98,11 +98,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Z/0zx3sFrzabDAVzhT+Zzro0u94=
+			gz9KmQH3l2QbZoWV5VTo7ELA4rk=
 			</data>
 			<key>hash2</key>
 			<data>
-			ae2tZZKWPb2fmE+WOMjW9qgRg4ahs80sGWt0lWDddBo=
+			P8x9o50XL218+jUyhSsTNN9ofUWOyAzHme6a/O/BziA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

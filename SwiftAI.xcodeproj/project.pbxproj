@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9500F3431E5306310017CF57 /* SAINeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9500F3421E5306310017CF57 /* SAINeuralNetwork.swift */; };
 		95D570F11E4FA2FC00378244 /* SwiftAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D570E71E4FA2FC00378244 /* SwiftAI.framework */; };
 		95D570F61E4FA2FC00378244 /* SwiftAITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D570F51E4FA2FC00378244 /* SwiftAITests.swift */; };
 		95D570F81E4FA2FC00378244 /* SwiftAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 95D570EA1E4FA2FC00378244 /* SwiftAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9500F3421E5306310017CF57 /* SAINeuralNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAINeuralNetwork.swift; sourceTree = "<group>"; };
 		95D570E71E4FA2FC00378244 /* SwiftAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D570EA1E4FA2FC00378244 /* SwiftAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftAI.h; sourceTree = "<group>"; };
 		95D570EB1E4FA2FC00378244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				95D571011E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift */,
 				95D571031E4FA72900378244 /* Extensions.swift */,
 				95D571071E4FF09800378244 /* SAIPerceptron.swift */,
+				9500F3421E5306310017CF57 /* SAINeuralNetwork.swift */,
 			);
 			path = SwiftAI;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				95D571081E4FF09800378244 /* SAIPerceptron.swift in Sources */,
 				95D571021E4FA4A400378244 /* SAIMccullochPittsPerceptron.swift in Sources */,
 				95D571041E4FA72900378244 /* Extensions.swift in Sources */,
+				9500F3431E5306310017CF57 /* SAINeuralNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

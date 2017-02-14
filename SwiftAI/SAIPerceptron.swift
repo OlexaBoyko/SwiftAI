@@ -11,12 +11,8 @@ import Foundation
 open class SAIPerceptron {
     public var studyingCoefficient: Double {
         didSet{
-            if studyingCoefficient > 1 {
-                studyingCoefficient = 1
-                return
-            }
-            if studyingCoefficient < 0 {
-                studyingCoefficient = 0
+            if studyingCoefficient <= 0 {
+                studyingCoefficient = Double.leastNormalMagnitude
                 return
             }
         }
@@ -24,7 +20,7 @@ open class SAIPerceptron {
     public var inputWeights: Array<Double>
     internal var delegates: Array<SAIPerceptronDelegate> = []
     public var activationFunc: (Double) -> Double
-    
+    public var inputIndexes: [Int] = []
     
     public init(studyingCoefficient: Double,
          inputWeights: Array<Double>,

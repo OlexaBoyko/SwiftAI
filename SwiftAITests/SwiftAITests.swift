@@ -53,7 +53,17 @@ class SwiftAITests: XCTestCase {
     }
     
     func testBackPropagationAlghorithm() {
-        
+        let network = SAINeuralNetwork(input: [0.5, 1],
+                                       layers: [[SAIPerceptronInfo(inputIndexes: [0, 1], weights: [0.5, 1]), SAIPerceptronInfo(inputIndexes: [0, 1], weights: [1, 0.5])],
+                                                [SAIPerceptronInfo(inputIndexes: [0, 1], weights: [0.5, -0.5])]
+                                        
+            ],
+                                       studyingCoefficient: 0.3,
+                                       expectedResult: 0.7,
+                                       transformingFunction: {1/(1 + exp($0))})
+        if network == nil {
+            XCTFail()
+        }
     }
     
     func testPerformanceExample() {
