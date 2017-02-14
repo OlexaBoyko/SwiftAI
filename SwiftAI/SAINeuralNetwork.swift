@@ -10,7 +10,7 @@ import Foundation
 
 class SAINeuralNetwork {
     var input: [Double]
-    var perceptronLayers: [[SAIPerceptron]] = [[]]
+    var perceptronLayers: [[SAIPerceptron]] = []
     var studyingCoefficient: Double = 0.1
     var expectedResult: Double
     
@@ -51,9 +51,9 @@ class SAINeuralNetwork {
     
     func computeResult() throws -> [Double] {
         do {
+            var tempInput = self.input
+            var tempResult = [Double]()
             for i in 0..<perceptronLayers.count {
-                var tempInput = self.input
-                var tempResult = [Double]()
                 for perceptron in perceptronLayers[i] {
                     var perceptronInput = [Double]()
                     for i in perceptron.inputIndexes {
@@ -64,6 +64,7 @@ class SAINeuralNetwork {
                 }
                 if i != perceptronLayers.count - 1 {
                     tempInput = tempResult
+                    tempResult = []
                 } else {
                     return tempResult
                 }
