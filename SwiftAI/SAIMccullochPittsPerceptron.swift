@@ -10,14 +10,12 @@ import Foundation
 
 open class SAIMccullochPittsPerceptron: SAIPerceptron {
     public init(studyingCoefficient: Double,
-         inputWeights: Array<Double>,
+         inputWeights: [SAIPerceptronInput],
          activationFunc: @escaping (Double) -> Bool) {
         
         let actFunc: (Double) -> Double = { input in
             return activationFunc(input) ? 1.0 : 0.0
         }
-        super.init(studyingCoefficient: studyingCoefficient,
-                   inputWeights: inputWeights,
-                   activationFunc: actFunc)
+        super.init(studyingCoefficient: studyingCoefficient, inputSource: inputWeights, activationFunc: actFunc)
     }
 }

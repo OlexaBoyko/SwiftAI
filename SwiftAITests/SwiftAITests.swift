@@ -23,50 +23,41 @@ class SwiftAITests: XCTestCase {
     
     func testOrFunction() {
         
-        let inputWeights = [0.0, 0.0]
-        
         let perc = SAIPerceptron(studyingCoefficient: 0.05,
-                                 inputWeights: inputWeights,
+                                 inputSource: [SAIPerceptronInput(weight: 0.0, input: 1.0),
+                                               SAIPerceptronInput(weight: 0.0, input: 0.0)],
                                  activationFunc: {return $0 >= 1.0 ? 1.0 : 0.0})
-        
-        do {
-            let expected = 1.0
+        let expected = 1.0
             
-            var result = try perc.calculate(input: [1.0, 0.0])
+            var result = perc.calculate()
             
             while result != expected {
-                result = try perc.calculate(input: [1.0, 0.0])
-                //print(result)
-                try perc.educate(withInput: [1.0, 0.0], expectingResult: 1.0)
-                //print(perc.inputWeights)
+                result = perc.calculate()
+                print(perc.inputSource.first?.weight as Any)
+                perc.educate(expectingResult: 1.0)
+                //print(perc.inputSource)
             }
             
             //            print(result)
             //            try perc.educate(withInput: [1.0, 0.0], expectingResult: 1.0)
             //            print(perc.inputWeights)
             
-            
-        } catch {
-            XCTFail()
-        }
         
     }
     
     func testBackPropagationAlghorithm() {
-        let network = SAINeuralNetwork(input: [0.5, 1],
-                                       layers: [[SAIPerceptronInfo(inputIndexes: [0, 1], weights: [0.5, 1]), SAIPerceptronInfo(inputIndexes: [0, 1], weights: [1, 0.5])],
-                                                [SAIPerceptronInfo(inputIndexes: [0, 1], weights: [0.5, -0.5])]
-                                        
-            ],
+        
+        let perc11 = SAIPerceptronInput
+        
+        let network = SAINeuralNetwork(perceptrons: [SAIPerceptron()],
                                        studyingCoefficient: 0.3,
-                                       expectedResult: 0.7,
                                        transformingFunction: {1/(1 + exp(-$0))})
         if network == nil {
             XCTFail()
         }
         
         do {
-            let value = try network?.computeResult()
+            let value = try network?.
             //print(value?.first as Any)
         } catch {
             XCTFail()

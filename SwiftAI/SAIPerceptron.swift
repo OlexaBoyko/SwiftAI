@@ -17,66 +17,70 @@ open class SAIPerceptron {
             }
         }
     }
-    public var inputWeights: Array<Double>
-    internal var delegates: Array<SAIPerceptronDelegate> = []
+    //public var inputWeights: Array<Double>
+    //internal var delegates: Array<SAIPerceptronDelegate> = []
     public var activationFunc: (Double) -> Double
-    public var inputIndexes: [Int] = []
+    public var inputSource: [SAIPerceptronInput] = []
+    ///Get input from input source
+    public var inputValues: [Double] {
+        var result = [Double]()
+        for inputEdge in self.inputSource {
+            let input = inputEdge.input.output
+            result.append(input)
+        }
+        return result
+    }
+    
+    
     
     public init(studyingCoefficient: Double,
-         inputWeights: Array<Double>,
+         inputSource: [SAIPerceptronInput],
          activationFunc: @escaping (Double) -> Double) {
         
         self.studyingCoefficient = studyingCoefficient
-        self.inputWeights = inputWeights
-        //self.expectingResult = expectingResult
+        self.inputSource = inputSource
         self.activationFunc = activationFunc
     }
     
-    public func calculate(input: [Double]) throws -> Double {
-        if input.count != inputWeights.count {
-            throw NSError()
-        }
-        
+    public func calculate() -> Double {
         var result = 0.0
-        for i in 0..<input.count {
-            result.add(input[i]*self.inputWeights[i])
+        for edge in inputSource {
+            result.add(edge.input.output*edge.weight)
         }
         
         let output = activationFunc(result)
         
-        callculationDidFinish(output: output)
-        
         return output
     }
     
-    public func educate(withInput input: [Double], expectingResult: Double) throws {
-        let d = expectingResult
-        let output = try self.calculate(input: input)
-        var result = [Double]()
-        
-        for i in 0..<input.count {
-            result.append(self.inputWeights[i] + self.studyingCoefficient * (d - output) * input[i])
+    public func educate(expectingResult d: Double) {
+        let output = self.calculate()
+        for edge in self.inputSource {
+            edge.weight = edge.weight + self.studyingCoefficient * (d - output) * edge.input.output
         }
-        
-        self.inputWeights = result
-    }
-    
-    public func addDelegate(_ delegate: SAIPerceptronDelegate) {
-        self.delegates.append(delegate)
-    }
-    
-    internal func callculationDidFinish(output: Double) {
-        for delegate in self.delegates {
-            delegate.calculationFinished(output: output)
-        }
-    }
-    
-    //TODO: educateHiddenPerceptron
-    public func educateHiddenPerceptron() {
-        
     }
 }
 
-public protocol SAIPerceptronDelegate {
-    func calculationFinished(output: Double)
+extension SAIPerceptron: SAIOutputValue {
+    public var output: Double{
+        return self.calculate()
+    }
 }
+
+
+public class SAIPerceptronInput {
+    var weight: Double
+    var input: SAIOutputValue
+    
+    init(weight: Double, input: SAIOutputValue) {
+        self.weight = weight
+        self.input = input
+    }
+}
+
+public protocol SAIOutputValue {
+    var output: Double {
+        get
+    }
+}
+
