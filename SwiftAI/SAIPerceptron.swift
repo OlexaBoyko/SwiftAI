@@ -81,10 +81,6 @@ open class SAIPerceptron {
     }
 }
 
-protocol SAIPerceptronDelegate {
+public protocol SAIPerceptronDelegate {
     func calculationFinished(output: Double)
 }
-
-
-
-
