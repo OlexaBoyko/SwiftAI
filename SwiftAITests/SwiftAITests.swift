@@ -67,7 +67,7 @@ class SwiftAITests: XCTestCase {
         
         do {
             let value = try network?.computeResult()
-            print(value?.first as Any)
+            //print(value?.first as Any)
         } catch {
             XCTFail()
         }

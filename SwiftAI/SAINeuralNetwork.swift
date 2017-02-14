@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SAINeuralNetwork {
+open class SAINeuralNetwork {
     var input: [Double]
     var perceptronLayers: [[SAIPerceptron]] = []
     var studyingCoefficient: Double = 0.1
@@ -74,6 +74,47 @@ class SAINeuralNetwork {
         }
         throw NSError()
     }
+}
+
+open class SAINeuralNetworkTeacher {
+    public var neuralNetwork: SAINeuralNetwork
+    public var calculationHistory: [[Double]]
+    public var expectedResult: Double
+    public var studyingCoefficient: Double
+    
+    init(neuralNetwork: SAINeuralNetwork, expectedResult: Double? = nil, studyingCoefficient: Double? = nil) {
+        self.neuralNetwork = neuralNetwork
+        self.expectedResult = expectedResult ?? neuralNetwork.expectedResult
+        self.studyingCoefficient = studyingCoefficient ?? neuralNetwork.studyingCoefficient
+        self.calculationHistory = []
+    }
+    
+//    @discardableResult
+//    func educate() -> SAINeuralNetwork {
+//        do {
+//            self.calculationHistory.append(try self.neuralNetwork.computeResult())
+//            
+//            for i in (0..<self.neuralNetwork.perceptronLayers.count).reversed() {
+//                let layer = self.neuralNetwork.perceptronLayers[i]
+//                for j in 0..<layer.count {
+//                    let weights = layer[j].inputWeights
+//                    var newWeights = [Double]()
+//                    for k in 0..<weights.count {
+//                        var deltaWeight = 0.0
+//                        
+//                        newWeights.append(weights[k] + deltaWeight)
+//                    }
+//                }
+//            }
+//            
+//            
+//            
+//        } catch {
+//            
+//        }
+//        
+//        return self.neuralNetwork
+//    }
 }
 
 public struct SAIPerceptronInfo {
