@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Double: SAIOutputValue {
-    public var output: Double {
+extension Double: SAIOutputingInstance {
+    public var result: Double {
         return self
     }
 }
