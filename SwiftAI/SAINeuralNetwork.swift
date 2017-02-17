@@ -9,18 +9,23 @@
 import Foundation
 
 open class SAINeuralNetwork {
-    var perceptrons: [SAIPerceptron] = []
+    internal var results: [Double] = []
     var studyingCoefficient: Double = 0.1
     var expectedResult: Double?
+    var transformingFunc: (Double) -> (Double)
+    var delegate: SAINeuralNetworkDelegate?
     
-    init(perceptronsInputs: [SAIPerceptron], studyingCoefficient: Double, activationFunc: @escaping (Double) -> Double) {
-        self.perceptrons = perceptronsInputs
+    init(headingLayer: [SAIPerceptron],
+        otherLayers: [[SAIPerceptron]],
+        input: [Double],
+        transformingFunc: (Double) -> Double = {1/(1 + exp(-$0))},
+        studyingCoefficient: Double) {
         
-        for perceptron in self.perceptrons {
-            perceptron.activationFunc = activationFunc
-            perceptron.studyingCoefficient = studyingCoefficient
-        }
+        
+        
     }
 }
 
-
+public protocol SAINeuralNetworkDelegate {
+    func computationCompleted(result: [Double])
+}
