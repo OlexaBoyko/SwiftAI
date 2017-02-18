@@ -113,7 +113,6 @@ public final class SAIPerceptronInput: SAIOutputingInstance {
 
 extension SAIPerceptronInput: SAIPerceptronComputationDelegate {
     
-    ///@discussion computationCompleted method called by input(Perceptron, or )
     ///@param result Double which will be computed and transfered to perceptron
     public func computationCompleted(withResult result: Double) {
         self.owningPerceptron?.computationCompleted(withResult: self.weight*result)
