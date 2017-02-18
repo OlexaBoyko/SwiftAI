@@ -13,7 +13,7 @@ open class SAIPerceptron: SAIOutputingInstance {
     ///All perceptron's output. 
     ///After computation result using tail alghorythm, perceptron calls computationCompleted for every delegate
     ///IMPORTANTLY!: If you want link Perceptrons, add fathers perceptron inputs to son's delegates
-    public final var delegates: [SAIPerceptronDelegate] = []
+    public final var outputDelegates: [SAIPerceptronComputationDelegate] = []
     
     ///All perceptron's inputs with weight and input value
     internal final var inputs: [SAIPerceptronInput]
@@ -36,22 +36,23 @@ open class SAIPerceptron: SAIOutputingInstance {
         return output
     }
     
+    /*!
+    * @discussion complete initializer
+    * @param inputs
+    * @param transformingFunction
+    */
     public init(inputs: [SAIPerceptronInput] = [],
                 transformingFunction: @escaping ((Double) -> Double) = {1/(1 + exp(-$0))},
-                outputDelegates delegates: [SAIPerceptronDelegate] = []) {
+                outputDelegates: [SAIPerceptronComputationDelegate] = []) {
         self.inputs = inputs
         self.transformingFunction = transformingFunction
-        self.delegates = delegates
+        self.outputDelegates = outputDelegates
     }
     
     ///Call to link perceptrons
     public func addInput(_ input: SAIOutputingInstance, weight: Double) {
         self.inputs.append(SAIPerceptronInput(weight: weight, input: input))
     }
-    
-//    public func addSon(_ son: SAIPerceptronInput) {
-//        self.
-//    }
     
     ///Compute result using heading alghorithm
     public func compute() -> Double {
@@ -66,10 +67,11 @@ open class SAIPerceptron: SAIOutputingInstance {
     }
 }
 
-extension SAIPerceptron: SAIPerceptronDelegate{
+extension SAIPerceptron: SAIPerceptronComputationDelegate{
     
     ///Called by SAIPerceptronInput.
     ///If computedInputs.count == inputs.count class will call delegates
+    ///@param result
     public func computationCompleted(withResult result: Double) {
         self.computedInputs.append(result)
         if self.computedInputs.count == self.inputs.count {
@@ -82,21 +84,22 @@ extension SAIPerceptron: SAIPerceptronDelegate{
             
             output = self.transformingFunction(output)
             
-            for delegate in self.delegates {
+            for delegate in self.outputDelegates {
                 delegate.computationCompleted(withResult: output)
             }
         }
     }
 }
 
-public protocol SAIPerceptronDelegate {
+public protocol SAIPerceptronComputationDelegate {
     func computationCompleted(withResult result: Double)
 }
 
 ///Perceptron input. After computation calls PerceptronsMethod .inputComputed()
 public final class SAIPerceptronInput: SAIOutputingInstance {
     public final var weight: Double
-    public final var owningPerceptron: SAIPerceptron?
+    ///
+    public final weak var owningPerceptron: SAIPerceptron?
     public final var input: SAIOutputingInstance
     public var result: Double {
         return input.result*weight
@@ -108,7 +111,10 @@ public final class SAIPerceptronInput: SAIOutputingInstance {
     }
 }
 
-extension SAIPerceptronInput: SAIPerceptronDelegate {
+extension SAIPerceptronInput: SAIPerceptronComputationDelegate {
+    
+    ///@discussion computationCompleted method called by input(Perceptron, or )
+    ///@param result Double which will be computed and transfered to perceptron
     public func computationCompleted(withResult result: Double) {
         self.owningPerceptron?.computationCompleted(withResult: self.weight*result)
     }
